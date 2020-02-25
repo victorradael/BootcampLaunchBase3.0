@@ -15,8 +15,8 @@ const people = [
 
     {
         name: 'Jussara',
-        age: 60,
-        contributionInYears: 33,
+        age: 50,
+        contributionInYears: 30,
         genre: 'F'
     },
 
