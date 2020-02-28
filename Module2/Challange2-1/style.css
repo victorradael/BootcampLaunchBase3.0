@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Trade+Winds&display=swap');
 
 :root {
     --green-light: #adff2f;
@@ -13,14 +14,13 @@
 
 body {
     background: #282a36;
+    font-family: 'Roboto', sans-serif ;
 }
 
 header {
     background-color: slateblue;
     border-bottom: 2px solid var(--green-off);
-    padding: 32px;
     text-align: center;
-    font-family: 'Roboto', sans-serif ;
     height: 100%;
     color: white;
     height: 100%;
@@ -33,16 +33,108 @@ header:hover {
 
 header h1 {
     font-weight: bold;
-    padding-bottom: 30px;
+    padding: 32px;
+}
+
+.links {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding-bottom: 15px;
 }
 
 header a {
     text-decoration: none;
-    padding: 30px;
+    padding: 10 30px 0 0;
     color: white;
 }
 
 header a:hover {
     color: var(--green-light);
+    transition: 500ms;
+}
+
+main {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
+    color: white;
+}
+
+main img {
+    margin: 30px;
+    border: 2px solid var(--green-off);
+    border-radius: 50%;
+    height: 300px;
+}
+
+main img:hover {
+    border: 2px solid var(--green-light);
+    transition: 500ms;
+}
+
+main h1 {
+    font-family: 'Trade Winds', sans-serif ;
+    margin-bottom: 20px;
+}
+
+main h1:hover {
+    color: var(--green-light);
+    transition: 2000ms;
+}
+
+main h2,
+main p {
+    padding: 10px;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.div-techs {
+    background-color: #6a5acd55;
+    border: 1px solid #6a5acd55 ;
+    max-width: 300px;
+    padding: 10px;
+    margin: 0 auto;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+.div-techs:hover {
+    border: 2px solid #6a5acd ;
+    transition: 500ms;
+}
+
+.techs {
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.techs li{
+    text-decoration: none;
+    margin: 5px;
+}
+
+.techs li:hover{
+    color: var(--green-light);
+    transition: 1000ms;
+}
+
+.social-media {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.social-media a {
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid var(--green-off);
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.social-media a:hover {
+    color: #7366ca;
+    border: 2px solid var(--green-light);
     transition: 500ms;
 }
