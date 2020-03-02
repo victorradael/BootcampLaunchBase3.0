@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Foodfy</title>
-        <link rel="icon" href="/assets/chef.png" type="image/x-icon" />
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <main>
-            <header>
-                <a href="/src/home.html"><img src="/assets/logo.png" alt="Logo Foodfy"></a>
-                <a href="sobre.html" class="selected">Sobre</a>
-                <a href="receitas.html">Receitas</a>
-            </header>
+{% extends "layout.njk"%}
+
+{% block head %}
+ <title>Foodfy - Sobre</title>
+{% endblock head %}
+
+{%block content%}
          <h1 class="about-main-title">Sobre o Foodfy</h1>
          <p class="about-text">
             Suspendisse placerat neque neque. Morbi dictum nulla non sapien rhoncus,
@@ -57,9 +49,4 @@
             Donec libero neque, vulputate semper orci et, malesuada sodales eros. Nunc ut nulla faucibus
             enim ultricies euismod.
          </p>
-        </main>
-        <footer>
-            Todos direitos reservados, receitas Foodfy.
-        </footer>
-    </body>
-</html>
+{%endblock%}
