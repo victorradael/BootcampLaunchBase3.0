@@ -1,0 +1,13 @@
+{
+  "instructors": [
+    {
+      "id": 2,
+      "avatar_url": "https://source.unsplash.com/collection/3465564/500x500",
+      "name": "Victor Gabriel Alves Radael",
+      "birth": 854323200000,
+      "gender": "M",
+      "services": "Bodybuilding",
+      "created_at": 1583183386720
+    }
+  ]
+}

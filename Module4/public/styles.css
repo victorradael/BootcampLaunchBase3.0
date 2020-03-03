@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css?family=Oxanium:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+:root {
+    --rocketseat-color: #7159c1;
+    --secondary-color: #f7fa68;
+}
+
+* {
+    padding: 0;
+    border: none;
+    margin: 0;
+}
+
+body {
+    background-color: var(--rocketseat-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background-color: #eee;
+    width: 100%;
+    padding: 32px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.links {
+    font-size: 22px;
+}
+
+.links a + a {
+    margin-left: 32px;
+}
+
+.links a {
+    font-family: 'Oxanium', sans-serif;
+    text-decoration: none;
+    position: relative;
+}
+
+.links a.active {
+    font-weight: bold;
+    color: var(--rocketseat-color);
+}
+
+.links a:hover {
+    color: var(--rocketseat-color);
+}
+
+.links a::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: var(--rocketseat-color);
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+}
+
+.links a:hover::after {
+    width: 100%;
+    transition: width 500ms ease-in-out;
+}
+
+/*===CARD===*/
+
+.card {
+    background-color: #eee;
+    width: 800px;
+    min-height: 400px;
+    margin: 45px auto;
+    /*grid 1/2*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /*Sombra*/
+    box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.4);
+
+    /*animation*/
+    animation: up 500ms ease-out;
+}
+
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    } 
+    to {
+        opacity: 1;
+    }
+}
+
+/*details*/
+
+.details {
+    padding: 32px;
+}
+
+.details .item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 16px 0;
+}
+
+.details .item:last-child {
+    border: none;
+}
+
+.details h3,
+.details .item div:nth-child(1) {
+    font-size: 14px;
+    line-height: 24px;
+    color: #777;
+    letter-spacing: 0.7px;
+    font-weight: normal;
+}
+
+.details .item div:nth-child(2) {
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.details h3 {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--rocketseat-color);
+}
+
+.details .item div:nth-child(2) span {
+    padding: 8px 16px;
+    background-color: var(--secondary-color);
+    border-radius: 16px;
+    color: #777;
+    margin-right: 4px;
+    margin-top: 8px;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+/*FORM*/
+
+input {
+    width: 100%;
+    outline: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+input[type="radio"] {
+    width: initial;
+    margin-right: 4px;
+}
+
+input::placeholder {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+button[type="submit"],
+a.button {
+    padding: 8px 32px;
+    background-color: var(--rocketseat-color);
+    border-radius: 4px;
+    margin-top: 32px;
+    width: 100%;
+    color: #eee;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+a.button {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+}
+
+#form-delete button[type="submit"] {
+    margin-top: 8px;
+    background-color: rgba(255, 0, 0, 0.7);
+}
