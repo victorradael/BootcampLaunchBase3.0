@@ -20,12 +20,12 @@
 <div class="most-popular-recipes">
 
     {% for item in items %}
-    <div class="recipe" id="burger">
+    <div class="recipe" id="{{item.id}}">
         <img src="{{item.image}}" alt="Imagem {{item.title}}">
         <p id="recipe-name">{{item.title}}</p>
         <p id="cook-name">{{item.author}}</p>
     </div>
     {%endfor%}
-
+    <script src="/scripts.js"></script>
 </div>
 {%endblock%}

@@ -137,7 +137,7 @@ footer {
     cursor: auto;
 }
 
-.single-page img,
+#img-recipe,
 .single-page h1, 
 .single-page h2{
     text-align: center;
@@ -174,4 +174,9 @@ footer {
     color: #999;
     margin-left: 5px;
     bottom: 0;
+}
+
+#img-recipe {
+    width: 940px;
+    height: 280px;
 }
