@@ -1,13 +1,27 @@
 {
+  "members": [
+    {
+      "id": 1,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/53879758?s=460&v=4",
+      "name": "VICTOR",
+      "email": "victorradael@gmail.com",
+      "birth": -187142400000,
+      "gender": "M",
+      "blood": "AB+",
+      "weight": "80",
+      "height": "180",
+      "created_at": 1583283658263
+    }
+  ],
   "instructors": [
     {
-      "id": 2,
-      "avatar_url": "https://source.unsplash.com/collection/3465564/500x500",
-      "name": "Victor Gabriel Alves Radael",
+      "id": 1,
+      "avatar_url": "https://media.thestar.com.my/Prod/79F56EFF-0B2F-442E-A7ED-4F7AC4A0C538",
+      "name": "VICTOR GABRIEL ALVES RADAEL",
       "birth": 854323200000,
       "gender": "M",
-      "services": "Bodybuilding",
-      "created_at": 1583183386720
+      "services": "Bodybuilding, Swimming",
+      "created_at": 1583290269832
     }
   ]
 }

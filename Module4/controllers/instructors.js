@@ -1,8 +1,12 @@
 const fs = require('fs')
-const data = require('./data.json')
-const {age, date} = require('./utils')
+const data = require('../data.json')
+const {age, date} = require('../utils')
 
-//show
+
+exports.index = (req, res) => {
+    return res.render('instructors/index', {instructors : data.instructors})
+}
+
 exports.show = (req,res) => {
     const {id} = req.params
 
@@ -22,7 +26,10 @@ exports.show = (req,res) => {
     return res.render('instructors/show', {instructor: instructor})
 }
 
-//create
+exports.create = (req, res) => {
+    return res.render('instructors/create')
+}
+
 exports.post = (req, res) => {
 
     const keys = Object.keys(req.body)
@@ -58,7 +65,6 @@ exports.post = (req, res) => {
     // return res.send(req.body)
 }
 
-//edit only view data saved
 exports.edit =  (req, res) => {
     const {id} = req.params
 
@@ -70,7 +76,7 @@ exports.edit =  (req, res) => {
 
     const instructor = {
         ...foundInstructor,
-        birth: date(foundInstructor.birth)
+        birth: date(foundInstructor.birth).iso
 
     }
 
@@ -78,7 +84,6 @@ exports.edit =  (req, res) => {
     return res.render('instructors/edit', {instructor})
 }
 
-//put
 exports.put = (req, res) => {
     const {id} = req.body
     let index = 0
@@ -95,7 +100,8 @@ exports.put = (req, res) => {
     const instructor = {
         ...foundInstructor,
         ...req.body,
-        birth: Date.parse(req.body.birth)
+        birth: Date.parse(req.body.birth),
+        id: Number(req.body.id)
     }
 
     data.instructors[index] = instructor
@@ -107,7 +113,6 @@ exports.put = (req, res) => {
     })
 }
 
-//delete
 exports.delete = (req, res) => {
     const {id} = req.body
 
