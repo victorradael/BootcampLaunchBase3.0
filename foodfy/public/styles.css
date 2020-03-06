@@ -32,6 +32,18 @@ header a {
     align-self: flex-start;
 }
 
+#header-admin {
+    width: 940px;
+    text-align: left;
+}
+
+.admin {
+    background-color: #111;
+    width: 100%;
+    display: flex;
+    justify-content: center ;
+}
+
 .home-presentation {
     background: #FBDFDB;
     display: grid;
@@ -179,4 +191,65 @@ footer {
 #img-recipe {
     width: 940px;
     height: 280px;
+}
+
+/*Admin*/
+
+.header-fields {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    position: relative;
+    margin-top: 55px;
+}
+
+.header-fields h1 {
+    font-size: 24px;
+    line-height: 34px;
+}
+
+.header-fields a {
+    padding: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #eee;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #444 ;
+    border-radius: 4px;
+    background-color: rgba(30, 32, 190, 0.8);
+}
+
+.normal-fields {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.normal-fields h3 {
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 10px;
+}
+
+.normal-fields input,
+.normal-fields textarea {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    padding: 16px 0;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.normal-fields a {
+    text-decoration: none;
+    color: rgba(30, 32, 190, 0.8);
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.last-field textarea {
+    padding: 0;
+    min-height: 250px;
+    display: flex;
 }
