@@ -9,8 +9,7 @@ routes.get("/sobre" , recipes.showAbout)
 routes.get("/receitas" , recipes.showRecipes)
 routes.get("/receitas/:id", recipes.showRecipeId)
 
-routes.get("/admin/adcionarReceita", (req,res) => {
-    return res.render("admin/create")
-})
+routes.get("/admin/adicionarReceita", recipesAdmin.create)
+routes.post("/admin/adicionarReceita",recipesAdmin.post)
 
 module.exports = routes

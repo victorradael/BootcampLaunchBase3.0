@@ -208,7 +208,7 @@ footer {
     line-height: 34px;
 }
 
-.header-fields a {
+.header-fields button {
     padding: 8px;
     font-size: 16px;
     font-weight: bold;
@@ -218,6 +218,7 @@ footer {
     border: 1px solid #444 ;
     border-radius: 4px;
     background-color: rgba(30, 32, 190, 0.8);
+    cursor: pointer;
 }
 
 .normal-fields {
@@ -239,17 +240,26 @@ footer {
     padding: 16px 0;
     border-radius: 4px;
     font-size: 16px;
+    width: 100%;
 }
 
-.normal-fields a {
+.normal-fields button {
+    background-color: transparent;
     text-decoration: none;
     color: rgba(30, 32, 190, 0.8);
     font-weight: bold;
     font-size: 15px;
+    text-align: left;
+    cursor: pointer;
 }
 
 .last-field textarea {
     padding: 0;
     min-height: 250px;
     display: flex;
+}
+
+.active {
+    height: 0;
+    visibility: hidden;
 }

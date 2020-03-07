@@ -1,8 +1,7 @@
-const data = require('../data')
-const fs = require('fs')
+const {recipes} = require('../data.json')
 
 exports.showHome = (req, res) => {
-    return res.render('user/home', { items: data })
+    return res.render('user/home', { items: recipes })
 }
 
 exports.showAbout = (req, res) => {
@@ -10,13 +9,13 @@ exports.showAbout = (req, res) => {
 }
 
 exports.showRecipes = (req, res) => {
-    return res.render('user/receitas', {items: data})
+    return res.render('user/receitas', {items: recipes})
 }
 
 exports.showRecipeId = (req, res) => {
     const {id} = req.params
 
-    const recipe = data.find( recipe => {
+    const recipe = recipes.find( recipe => {
         return recipe.id == id
     })
 
