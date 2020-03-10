@@ -263,3 +263,57 @@ footer {
     height: 0;
     visibility: hidden;
 }
+
+.main-recipes-admin {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.recipe-admin {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 8px;
+}
+.recipe-admin img {
+    height: 80px;
+    width: 172px;
+}
+
+.manager-admin {
+    margin-top: 50px;
+    font-size: 24px;
+}
+
+.show-details {
+    background-color: transparent; 
+    font-weight: bold;
+    color: #713849;
+}
+
+.details-admin {
+    margin: 55px 0 24px 0;
+    
+}
+
+.details-admin h1 {
+    font-size: 24px;
+    margin-right: 502px;
+}
+
+.details-admin a{
+    background-color: #713849;
+    padding: 8px 16px;
+    border-radius: 4px;
+    color: #eee;
+    cursor: pointer;
+}
+
+#edit{
+    grid-template-columns: 5fr 1fr 1fr;
+    gap: 8px;
+}
+
+button.delete {
+    background-color: rgb(151, 0, 0);
+}

@@ -7,6 +7,15 @@ for (let recipe of recipes) {
     })
 }
 
+const recipesAdmin = document.querySelectorAll(' .recipe-admin')
+
+for(let recipe of recipesAdmin) {
+    recipe.addEventListener("click", _ => {
+        const recipeId = recipe.getAttribute("id")
+        window.location.href = `/admin/receita/${recipeId}`
+    })
+}
+
 function addIngredient() {
     const ingredients = document.querySelector("#ingredients")
     const fildContainer = document.querySelectorAll(".ingredient")
