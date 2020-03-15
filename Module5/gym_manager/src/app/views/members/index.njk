@@ -4,7 +4,18 @@
 
 <div class="card table-container">
 
-    <a href="/members/create">New Member</a>
+    <div class="header">
+        <a id = "new"href="/members/create">New Member</a>
+        <form action="/members" method="GET">
+            <input 
+                type="text"
+                name="filter"
+                placeholder="Name or email"
+                value="{{filter}}"
+            >
+            <button type="submit">Filter</button>
+        </form>
+    </div>
 
     <table width="100%">
         <thead>
@@ -31,6 +42,12 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <div class="pagination"
+        data-page = "{{pagination.page}}"
+        data-total = "{{pagination.total}}"
+        data-filter = "{{filter}}"
+    ></div>
 
 </div>
 {% endblock content %}

@@ -4,9 +4,29 @@ const { age, date } = require('../../lib/utils')
 module.exports = {
     index(req, res) {
 
-        Member.all(members => {
-            return res.render('members/index', { members })
-        })
+        let { filter, page, limit } = req.query
+
+        page = page || 1
+        limit = limit || 2
+        let offset = limit * (page - 1)
+
+        const params = {
+            filter,
+            page,
+            limit,
+            offset,
+            callback(members) {
+
+                const pagination = {
+                    total: Math.ceil(members[0].total / limit),
+                    page
+                }
+
+                return res.render("members/index", { members, pagination, filter })
+            }
+        }
+
+        Member.paginate(params)
 
     },
     show(req, res) {
@@ -21,7 +41,10 @@ module.exports = {
         })
     },
     create(req, res) {
-        return res.render('members/create')
+
+        Member.instructorSelectOptions(options => {
+            return res.render('members/create', {instructorOptions: options})
+        })
     },
     post(req, res) {
         const keys = Object.keys(req.body)
@@ -46,7 +69,10 @@ module.exports = {
 
             member.created_at = date(member.created_at).format
 
-            return res.render("members/edit", { member })
+            Member.instructorSelectOptions(options => {
+                return res.render ('members/edit', {member, instructorOptions: options})
+            })
+
         })
     },
     put(req, res) {

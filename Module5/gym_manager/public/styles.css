@@ -161,7 +161,7 @@ input::placeholder {
 }
 
 button[type="submit"],
-a.button {
+a .button {
     padding: 8px 32px;
     background-color: var(--rocketseat-color);
     border-radius: 4px;
@@ -172,7 +172,7 @@ a.button {
     font-size: 16px;
 }
 
-a.button {
+a .button {
     display: block;
     box-sizing: border-box;
     text-align: center;
@@ -242,12 +242,77 @@ tbody tr td:last-child a,
     border-radius: 6px;
 }
 
-.table-container a {
+/* .table-container a {
     margin-bottom: 16px;
     display: inline-block;
-}
+} */
 
 .table-container thead tr th:last-child,
 td:last-child {
     text-align: center;
+}
+
+/*FILTERS*/
+
+.table-container .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.table-container .header a {
+    margin: 0;
+    width: 120px;
+    text-align: center;
+}
+
+.table-container .header form {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    align-items: center;
+    grid-gap: 8px;
+}
+
+.table-container .header form input {
+    background-color: #eee;
+    border: solid 1px #bbb;
+    padding: 4px 8px;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.table-container .header form button {
+    margin: 0;
+}
+
+/*Pagination*/
+
+.table-container {
+    display: grid;
+    grid-template: 64px 1fr 16px / 1fr;
+}
+
+.table-container .header {
+    margin: 0;
+    align-self: start;
+}
+
+.table-container .pagination {
+    margin: 0;
+    align-self: end;
+    justify-self: center;
+}
+
+.pagination #pages {
+    background-color: transparent;
+    color: var(--rocketseat-color);
+    font-size: 16px;
+    text-decoration: none;
+    margin-right: 16px;
+}
+
+.pagination #pages:hover {
+    filter: brightness(0.3);
+    border-bottom: 1px solid var(--rocketseat-color);
 }
