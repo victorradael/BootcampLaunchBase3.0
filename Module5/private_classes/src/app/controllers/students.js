@@ -1,144 +1,98 @@
-const fs = require('fs')
-const data = require('../../data.json')
-const {age, date} = require('../../lib/utils')
+const Student = require('../models/student')
+const { date } = require('../../lib/utils')
 
 module.exports = {
-    index(req,res){
-        return res.render('students/students', {students: data.students})
-    },
-    show(req,res){
-        const {id} = req.params
-    
-        const foundStudent = data.students.find( student => {
-            return student.id == id
-        })
-    
-        if(!foundStudent) return res.send("Student Not Found")
-    
-        const student = {
-            ...foundStudent,
-            birth: date(foundStudent.birth).birthday,
-            age: age(foundStudent.birth),
-            created_at: new Intl.DateTimeFormat("en-US").format(foundStudent.created_at)
-        }
-    
-        return res.render('students/show', {student: student})
-    },
-    create(req, res){
-        return res.render('students/create')
-    },
-    post(req, res){
+    index(req, res) {
 
+        let { filter, page, limit } = req.query
+
+        page = page || 1
+        limit = limit || 4
+        let offset = limit * (page - 1)
+
+        const params = {
+            filter,
+            page,
+            limit,
+            offset,
+            callback(students) {
+
+                const pagination = {
+                    total: Math.ceil(students[0].total / limit),
+                    page
+                }
+
+                return res.render("students/students", { students, pagination, filter })
+            }
+        }
+
+        Student.paginate(params)
+
+    },
+    show(req, res) {
+        Student.find(req.params.id, student => {
+            if (!student) return res.send('Student Not Found')
+
+            student.birth_date = date(student.birth_date).birthday
+
+            student.created_at = date(student.created_at).format
+
+            return res.render("students/show", { student })
+        })
+    },
+    create(req, res) {
+
+        Student.teacherSelectOptions(options => {
+            return res.render('students/create', {teacherOptions: options})
+        })
+    },
+    post(req, res) {
         const keys = Object.keys(req.body)
-    
+
         for (key of keys) {
-            if(req.body[key] == "" ){
+            if (req.body[key] == "") {
                 return res.send(' Please, fill all fields!')
             }
         }
-        
-        let {
-            avatar_url, 
-            birth, 
-            name,
-            email,
-            grade,
-            available_workload 
-        } = req.body
-    
-        birth = Date.parse(birth)
-    
-        
-        const created_at = Date.now()
-    
-        let id = 1
-    
-        const lastStudent = data.students[data.students.length -1]
-    
-        if(lastStudent) {
-            id = lastStudent.id + 1
-        }
-        
-    
-        data.students.push({
-            id,
-            avatar_url,
-            name,
-            email,
-            birth,
-            grade,
-            available_workload: Number(available_workload),
-            created_at,
+
+        Student.create(req.body, student => {
+            return res.redirect(`/students/${student.id}`)
         })
-    
-        fs.writeFile("data.json", JSON.stringify(data, null, 2), err => {
-            if(err) return res.send(`Write file error:${err}`)
-    
-            return res.redirect("/students")
-        })
-    
+
+
     },
-    edit(req, res){
-        const {id} = req.params
-    
-        const foundStudent = data.students.find( student => {
-            return student.id == id
+    edit(req, res) {
+        Student.find(req.params.id, student => {
+            if (!student) return res.send('Student Not Found')
+
+            student.birth_date = date(student.birth_date).iso
+
+            student.created_at = date(student.created_at).format
+
+            Student.teacherSelectOptions(options => {
+                return res.render ('students/edit', {student, teacherOptions: options})
+            })
+
         })
-    
-        if(!foundStudent) return res.send("Student Not Found")
-    
-        const student = {
-            ...foundStudent,
-            age: date(foundStudent.birth).iso
-    
-        }
-    
-    
-        return res.render('students/edit', {student})
     },
-    put(req, res){
-        const {id} = req.body
-        let index = 0
-    
-        const foundStudent = data.students.find( (student, foundIndex) => {
-            if (student.id == id) {
-                index = foundIndex
-                return true
+    put(req, res) {
+        const keys = Object.keys(req.body)
+
+        for (key of keys) {
+            if (req.body[key] == "") {
+                return res.send(' Please, fill all fields!')
             }
-        })
-    
-        if(!foundStudent) return res.send("Student Not Found")
-    
-        const student = {
-            ...foundStudent,
-            ...req.body,
-            birth: Date.parse(req.body.birth),
-            id: Number(req.body.id)
         }
-    
-        data.students[index] = student
-    
-        fs.writeFile("data.json", JSON.stringify(data, null, 2), err => {
-            if(err) return res.send("Write error!")
-    
-            return res.redirect(`/students/${id}`)
+
+        Student.update(req.body, _ => {
+            return res.redirect(`/students/${req.body.id}`)
         })
     },
-    delete(req, res){
-        const {id} = req.body
-    
-        const filteredStudents = data.students.filter( student => {
-            return student.id != id
+    delete(req, res) {
+        Student.delete(req.body.id, _ => {
+            return res.redirect(`/students`)
         })
-    
-        data.students = filteredStudents
-    
-        fs.writeFile("data.json", JSON.stringify(data, null, 2), err => {
-            if(err) return res.send('Delete Error')
-    
-            return res.redirect('/students')
-        })
-    }
+    },
 }
 
 

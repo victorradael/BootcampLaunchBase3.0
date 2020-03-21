@@ -22,7 +22,7 @@
 <div class="item">
     <div>Birthday</div>
     <div>
-        <input type="date" name="birth" value={{student.birth}}>
+        <input type="date" name="birth_date" value={{student.birth_date}}>
     </div>
 </div>
 
@@ -53,6 +53,19 @@
             </option>
             <option value="3st high school"{% if student.grade == "3st high school"%}selected{%endif%}>
             3st high school
+        </select>
+    </div>
+</div>
+
+<div class="item">
+    <div>Teachers</div>
+    <div>
+        <select name="teacher">
+            {% for teacher in teacherOptions %}
+            <option value="{{teacher.id}}" {% if member.teacher_id == teacher.id %}selected{%endif%}>
+                {{teacher.name}}
+            </option>
+            {% endfor %}
         </select>
     </div>
 </div>

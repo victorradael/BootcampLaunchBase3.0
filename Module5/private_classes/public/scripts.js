@@ -63,5 +63,5 @@ function createPagination(pagination) {
 
 if (pagination) {
     createPagination(pagination)
-}
+} 
 
