@@ -22,9 +22,11 @@
 <div class="normal-fields">
     <h3>Ingredientes</h3>
     <div id="ingredients">
+    {%for ingredient in item.ingredients%}
         <div class="ingredient">
-            <input type="text" name="ingredients[]" placeholder="Ingrediente" value="{{item.ingredients}}">
+            <input type="text" name="ingredients[]" placeholder="Ingrediente" value="{{ingredient}}">
         </div>
+    {%endfor%}
     </div>
     <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
 </div>
