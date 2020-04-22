@@ -1,16 +1,17 @@
-const express = require('express')
-const ProductController = require('./app/controllers/ProducController')
+const express = require("express");
+const ProductController = require("./app/controllers/ProducController");
 
-const routes = express.Router()
+const routes = express.Router();
 
-routes.get('/', (req, res) => {
-    return res.render("layout.njk")
-})
+routes.get("/", (req, res) => {
+  return res.render("layout.njk");
+});
 
-routes.get('/products/create', ProductController.create)
+routes.get("/products/create", ProductController.create);
+routes.post("/products", ProductController.post);
 
-routes.get('/ads/create', (req, res) => {
-    return res.redirect("/products/create")
-})
+routes.get("/ads/create", (req, res) => {
+  return res.redirect("/products/create");
+});
 
-module.exports = routes
+module.exports = routes;

@@ -2,20 +2,20 @@
 <html>
     <head>
 
-        
         {% block head %}
             <title>LaunchStore</title>
         {% endblock %}
+        <link rel="shortcut icon" href="https://lh3.googleusercontent.com/proxy/6Ggvy6u-fWVPuCuZpbBl0lo5l5YfW2cz-ssuAqXWUA56y2wtWmyX66NCBd0UAflrShvx6NIi9l8aoCXEZ9-KEls" type="image/x-icon">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
-        
+
         {% include "parts/header.njk"%}
 
         {% block content %}{%endblock%}
 
-        {% include "parts/footer.njk"%}
-        
+            {% include "parts/footer.njk"%}
+
         </body>
     </html>

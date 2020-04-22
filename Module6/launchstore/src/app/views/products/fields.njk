@@ -3,7 +3,7 @@
   <div>
     <select name="category_id">
       {% for category in categories %}
-        <option value="{{category.id}}" {% if product.category_id == category.id %} selected{%endif%}>
+        <option value="{{category.id}}" {% if product.category_id == category.id %} selected="{{category.name}}" {%endif%}>
           {{category.name}}
         </option>
       {% endfor %}
@@ -14,21 +14,14 @@
 <div class="item">
   <div>Nome</div>
   <div>
-    <input 
-      type="text" 
-      name="name" 
-      placeholder="Nome do Produto" 
-      value="{{product.name}}"
-    >
+    <input type="text" name="name" placeholder="Nome do Produto" value="{{product.name}}">
   </div>
 </div>
 
 <div class="item">
   <div>Descricao</div>
   <div>
-    <textarea name="description">
-      {{product.description}}
-    </textarea>
+    <textarea name="description">{{product.description}}</textarea>
   </div>
 </div>
 
@@ -37,44 +30,32 @@
 <div class="item">
   <div>Preco</div>
   <div>
-    <input 
-      type="text" 
-      name="price" 
-      placeholder="Preco do Produto" 
-      value="{{product.price}}"
-      {# mascara de moeda  #}
-    >
+    <input type="text" name="price" placeholder="Preco do Produto" value="{{product.price}}" onkeydown="Mask.apply(this, 'formatBRL')">
   </div>
   {% if product.old_price%}
-    <input type="hidden" name="old_price" value={{product.old_price}}>
-  {%endif%}
-</div>
-
-<div class="item">
-  <div>Quantidade</div>
-  <div>
-    <input 
-      type="number" 
-      name="quantity" 
-      placeholder="Estoque disponivel" 
-      value="{{product.quantity}}"
-    >
+    <input type="hidden" name="old_price" value="{{product.old_price}}}">
+    {%endif%}
   </div>
-</div>
 
-
-{% if product.status %}
-<div class="item">
-  <div>Disponivel</div>
-  <div>
-    <span>
-      <input type="radio" name="status" value="1" {% if product.status == '1'%} checked="checked" {%endif%}>
-      Sim
-    </span>
-    <span>
-      <input type="radio" name="status" value="0" {% if product.status == 'F'%} checked="checked" {%endif%}>
-      Nao
-    </span>
+  <div class="item">
+    <div>Quantidade</div>
+    <div>
+      <input type="number" name="quantity" placeholder="Estoque disponivel" value="{{product.quantity}}">
+    </div>
   </div>
-</div>
-{% endif %}
+
+  {% if product.status %}
+    <div class="item">
+      <div>Disponivel</div>
+      <div>
+        <span>
+          <input type="radio" name="status" value="1" {% if product.status == '1'%} checked="checked" {%endif%}>
+          Sim
+        </span>
+        <span>
+          <input type="radio" name="status" value="0" {% if product.status == 'F'%} checked="checked" {%endif%}>
+          Nao
+        </span>
+      </div>
+    </div>
+  {% endif %}
