@@ -17,11 +17,11 @@ CREATE TABLE "categories" (
   "name" text NOT NULL
 );
 
-CREATE TABLE "fields" (
+CREATE TABLE "files" (
   "id" SERIAL PRIMARY KEY,
   "name" text,
   "path" text NOT NULL,
-  "produc_id" int 
+  "product_id" int 
 );
 
 ALTER TABLE "products" ADD FOREIGN KEY ("category_id") REFERENCES "categories"("id");
